@@ -15,7 +15,7 @@ Apache License, Version 2.0
 
 Contact
 -------
-Toby Collier <toby collier at g mail dot com>
+Toby Collier <tobycollier@gmail.com>
 
 Support
 -------

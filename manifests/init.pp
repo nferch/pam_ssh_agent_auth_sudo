@@ -1,46 +1,24 @@
 # == Class: tobyw4n/pam_ssh_agent_auth_sudo
 #
-# Configures PAM to authenticate against ssh-agent for sudo access
+# Configures sudo to use ssh-agent for authentication instead of password.
+# Installs pam_ssh_agent_auth PAM module and overwrites /etc/pam.d/sudo 
 #
-# === Parameters
-#
-# Document parameters here.
-#
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
-#
-# === Variables
-#
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if it
-#   has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should not be used in preference to class parameters  as of
-#   Puppet 2.6.)
-#
+# Amazon Linux works out of the box. RHEL and CentOS require EPEL.
 # === Examples
 #
-#  class { pam_ssh_agent_auth:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
-#  }
-#
-# === Authors
-#
-# Toby Collier <toby collier at gmail dot com>
-#
-# === Copyright
-#
-# Copyright 2013 Toby Collier, unless otherwise noted.
-#
+#  include pam_ssh_agent_auth_sudo
+
 class pam_ssh_agent_auth_sudo {
 
+  $package = 'pam_ssh_agent_auth'
+
   case $operatingsystem {
-    centos, redhat, amazon: {
+    amazon: {
       $supported = true
-      $package = 'pam_ssh_agent_auth'
+    }
+    redhat, centos: {
+      $supported = true
+      notify { 'EPEL is required for pam_ssh_agent_auth module': }
     }
     default: {
       $supported = false

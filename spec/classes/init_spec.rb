@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'pam_ssh_agent_auth_sudo::rule' do
+describe 'pam_ssh_agent_auth_sudo' do
 
   let(:title) { 'pam_ssh_agent_auth_sudo'}
   

@@ -1,6 +1,8 @@
 pam_ssh_agent_auth_sudo
 =======================
 
+[![Build Status](https://travis-ci.org/tobyw4n/pam_ssh_agent_auth_sudo.png?branch=master)](https://travis-ci.org/tobyw4n/pam_ssh_agent_auth_sudo)
+
 Puppet module that installs the pam_ssh_agent_auth PAM module and changes 
 the /etc/pam.d/sudo config so that sudoers are authenticated with their 
 ssh-agent instead of a password.

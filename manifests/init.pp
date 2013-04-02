@@ -1,7 +1,7 @@
 # == Class: tobyw4n/pam_ssh_agent_auth_sudo
 #
 # Configures sudo to use ssh-agent for authentication instead of password.
-# Installs pam_ssh_agent_auth PAM module and overwrites /etc/pam.d/sudo 
+# Installs pam_ssh_agent_auth PAM module and overwrites /etc/pam.d/sudo
 #
 # Amazon Linux works out of the box. RHEL and CentOS require EPEL.
 # === Examples
@@ -12,7 +12,7 @@ class pam_ssh_agent_auth_sudo {
 
   $package = 'pam_ssh_agent_auth'
 
-  case $operatingsystem {
+  case $::operatingsystem {
     amazon: {
       $supported = true
     }
@@ -22,7 +22,7 @@ class pam_ssh_agent_auth_sudo {
     }
     default: {
       $supported = false
-      notify { "pam_ssh_agent_auth_sudo module does not support OS ${operatingsystem}": }
+      notify { "pam_ssh_agent_auth_sudo module does not support OS ${::operatingsystem}": }
     }
   }
 

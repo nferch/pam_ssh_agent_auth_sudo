@@ -1,5 +1,5 @@
 name    'tobyw4n-pam_ssh_agent_auth_sudo'
-version '0.0.1'
+version '0.0.2'
 author 'tobyw4n'
 license 'Apache License, Version 2.0'
 summary 'Installs pam_ssh_agent_auth and configures sudo to use it'

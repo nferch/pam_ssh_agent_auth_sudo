@@ -12,15 +12,15 @@ class pam_ssh_agent_auth_sudo {
 
 
   case $::operatingsystem {
-    amazon: {
+    'amazon': {
       $supported = true
       $package = 'pam_ssh_agent_auth'
     }
-    Ubuntu: {
+    'Ubuntu': {
       $supported = true
       $package = 'pam-ssh-agent-auth'
     }
-    redhat, centos: {
+    'redhat', 'centos': {
       $supported = true
       notify { 'EPEL is required for pam_ssh_agent_auth module': }
       $package = 'pam_ssh_agent_auth'

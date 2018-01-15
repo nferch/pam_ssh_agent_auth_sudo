@@ -44,6 +44,14 @@ class pam_ssh_agent_auth_sudo {
       source  => 'puppet:///modules/pam_ssh_agent_auth_sudo/sudo',
       require => Package[$package],
     }
+
+    file { '/etc/sudoers.d/pam_ssh_agent_auth':
+      ensure => present,
+      owner  => root,
+      group  => root,
+      mode   => '0440',
+      source  => 'puppet:///modules/pam_ssh_agent_auth_sudo/pam_ssh_agent_auth',
+    }
   }
 
 }

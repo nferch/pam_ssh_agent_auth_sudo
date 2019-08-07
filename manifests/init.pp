@@ -18,7 +18,12 @@ class pam_ssh_agent_auth_sudo {
     }
     'Ubuntu': {
       $supported = true
-      $package = 'pam-ssh-agent-auth'
+      if ($facts['os']['distro']['codename'] == 'trusty') or ($facts['os']['distro']['codename'] == 'precise') or ($facts['os']['distro']['codename'] == 'xenial') {
+        $package = 'pam-ssh-agent-auth'
+      } else {
+        $package = 'libpam-ssh-agent-auth'
+      }
+
     }
     'redhat', 'centos': {
       $supported = true

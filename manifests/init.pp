@@ -22,6 +22,7 @@ class pam_ssh_agent_auth_sudo {
         $package = 'pam-ssh-agent-auth'
       } else {
         $package = 'libpam-ssh-agent-auth'
+        $absent_package = 'pam-ssh-agent-auth'
       }
 
     }
@@ -40,6 +41,12 @@ class pam_ssh_agent_auth_sudo {
     package { $package:
       ensure => 'installed',
     }
+    if ($absent_package) {
+      package { $absent_package:
+        ensure => 'absent',
+      }
+    }
+
 
     file { '/etc/pam.d/sudo':
       ensure  => present,
